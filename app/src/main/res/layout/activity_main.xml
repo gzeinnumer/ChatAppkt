@@ -8,6 +8,7 @@
 
     <!--    todo 27-->
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/toolbar_parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -25,7 +26,8 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image"
                 android:layout_width="30dp"
-                android:layout_height="30dp" />
+                android:layout_height="30dp"
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/username"
@@ -36,5 +38,29 @@
                 android:textColor="#fff"
                 android:textStyle="bold" />
         </androidx.appcompat.widget.Toolbar>
+
+        <!--    todo 35-->
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_parent"
+            app:tabIndicatorColor="#fff"
+            app:tabSelectedTextColor="#fff"
+            app:tabTextColor="#fff" />
+        <!--        end todo 35-->
     </com.google.android.material.appbar.AppBarLayout>
+
+    <!--    todo 35_2-->
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_parent" />
+    <!--    end todo 35_2-->
 </androidx.constraintlayout.widget.ConstraintLayout>

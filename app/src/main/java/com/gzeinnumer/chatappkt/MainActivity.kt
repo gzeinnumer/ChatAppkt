@@ -6,12 +6,19 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.gzeinnumer.chatappkt.databinding.ActivityMainBinding
+import com.gzeinnumer.chatappkt.fragment.CameraFragment
+import com.gzeinnumer.chatappkt.fragment.ChatsFragment
+import com.gzeinnumer.chatappkt.fragment.UsersFragment
 import com.gzeinnumer.chatappkt.model.User
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     //todo 28
@@ -50,6 +57,19 @@ class MainActivity : AppCompatActivity() {
 
             override fun onCancelled(databaseError: DatabaseError) {}
         })
+
+        //todo 37
+        val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)
+
+        viewPagerAdapter.apply {
+            addFragment(CameraFragment(), "Camera")
+            addFragment(ChatsFragment(), "Chats")
+            addFragment(UsersFragment(), "Users")
+            with(binding){
+                viewPager.adapter = viewPagerAdapter
+                tabLayout.setupWithViewPager(viewPager)
+            }
+        }
     }
 
 
@@ -67,5 +87,35 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
         return false
+    }
+
+    //todo 36
+    internal class ViewPagerAdapter(
+        fm: FragmentManager,
+        behavior: Int
+    ) : FragmentPagerAdapter(fm, behavior) {
+
+        private val fragments: ArrayList<Fragment> = ArrayList()
+        private val title: ArrayList<String> = ArrayList()
+
+        override fun getItem(position: Int): Fragment {
+            return fragments[position]
+        }
+
+        override fun getCount(): Int {
+            return fragments.size
+        }
+
+        fun addFragment(
+            fragment: Fragment,
+            title: String
+        ) {
+            fragments.add(fragment)
+            this.title.add(title)
+        }
+
+        override fun getPageTitle(position: Int): CharSequence? {
+            return title[position]
+        }
     }
 }
