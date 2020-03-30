@@ -7,10 +7,12 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="@color/colorPrimary"
     tools:context=".StartActivity">
 
     <!--    todo 22-->
     <TextView
+        android:textColor="@android:color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/chat_app"
@@ -20,7 +22,7 @@
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="32dp"
         android:background="@color/colorPrimaryDark"
         android:text="@string/login"
         android:textColor="@android:color/white" />

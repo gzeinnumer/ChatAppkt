@@ -1,9 +1,10 @@
 package com.gzeinnumer.chatappkt
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.gzeinnumer.chatappkt.databinding.ActivityLoginBinding
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.gzeinnumer.chatappkt.databinding.ActivityStartBinding
 
 //Connected to FirebaseMVVM
@@ -11,6 +12,9 @@ class StartActivity : AppCompatActivity() {
 
     //todo 23
     lateinit var binding: ActivityStartBinding
+
+    //todo 25 part 3
+    private var firebaseUser: FirebaseUser? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,14 +25,7 @@ class StartActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.btnLogin.setOnClickListener {
-            startActivity(
-                Intent(
-                    applicationContext,
-                    LoginActivity::class.java
-                ).apply {
-//                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-//                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                })
+            startActivity(Intent(applicationContext, LoginActivity::class.java))
         }
 
         binding.btnRegister.setOnClickListener {
@@ -36,10 +33,18 @@ class StartActivity : AppCompatActivity() {
                 Intent(
                     applicationContext,
                     RegisterActivity::class.java
-                ).apply {
-//                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-//                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                })
+                ))
+        }
+    }
+
+    //todo 26
+    override fun onStart() {
+        super.onStart()
+        firebaseUser = FirebaseAuth.getInstance().currentUser
+        if (firebaseUser != null) {
+            val intent = Intent(applicationContext, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }
