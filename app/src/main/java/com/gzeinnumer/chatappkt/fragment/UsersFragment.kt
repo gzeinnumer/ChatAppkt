@@ -58,11 +58,11 @@ class UsersFragment : Fragment() {
                     }
                 }
                 Log.d("MyZein", list.size.toString())
-
-                myAdapter = UserAdapter(list)
-                binding.rvData.adapter = myAdapter
-                binding.rvData.layoutManager = LinearLayoutManager(context)
-
+                
+                binding.rvData.apply {
+                    adapter = UserAdapter(list)
+                    layoutManager = LinearLayoutManager(context)
+                }
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
