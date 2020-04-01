@@ -1,10 +1,12 @@
 package com.gzeinnumer.chatappkt.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.gzeinnumer.chatappkt.MessageActivity
 import com.gzeinnumer.chatappkt.R
 import com.gzeinnumer.chatappkt.databinding.UserItemBinding
 import com.gzeinnumer.chatappkt.model.User
@@ -36,6 +38,13 @@ class UserAdapter(private val list: List<User>) :
                 binding.profileImage.setImageResource(R.mipmap.ic_launcher)
             } else {
                 Glide.with(context!!).load(user.imageURL).into(binding.profileImage)
+            }
+
+            //todo 47
+            itemView.setOnClickListener {
+                context!!.startActivity(Intent(context, MessageActivity::class.java).apply {
+                    putExtra("id", user.id)
+                })
             }
         }
 
