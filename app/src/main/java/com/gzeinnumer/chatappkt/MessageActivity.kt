@@ -1,6 +1,7 @@
 package com.gzeinnumer.chatappkt
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.bumptech.glide.Glide
@@ -50,5 +51,28 @@ class MessageActivity : AppCompatActivity() {
 
             override fun onCancelled(databaseError: DatabaseError) {}
         })
+
+        binding.btnSent.setOnClickListener {
+            val msg = binding.textSend.text.toString()
+            if (msg != "") {
+                sendMessage(firebaseUser.uid, userId, msg)
+            } else {
+                Toast.makeText(this@MessageActivity, "pesan jangan kosong", Toast.LENGTH_SHORT)
+                    .show()
+            }
+            binding.textSend.setText("")
+        }
+    }
+
+
+    //todo 50
+    private fun sendMessage(
+        sender: String,
+        receiver: String,
+        message: String
+    ) {
+        val reference = FirebaseDatabase.getInstance().reference
+        val hashMap = mapOf("sender" to sender, "receiver" to receiver, "message" to message)
+        reference.child("Chats_app").push().setValue(hashMap)
     }
 }
