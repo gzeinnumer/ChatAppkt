@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import com.gzeinnumer.chatappkt.adapter.MessageAdapter
 import com.gzeinnumer.chatappkt.databinding.ActivityMessageBinding
+import com.gzeinnumer.chatappkt.model.Chat
 import com.gzeinnumer.chatappkt.model.User
 
 //todo 44
@@ -18,6 +21,10 @@ class MessageActivity : AppCompatActivity() {
     lateinit var binding: ActivityMessageBinding
     lateinit var firebaseUser: FirebaseUser
     lateinit var reference: DatabaseReference
+
+    //todo 58
+    lateinit var myAdapter: MessageAdapter
+    var listChat: ArrayList<Chat> = ArrayList<Chat>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +54,9 @@ class MessageActivity : AppCompatActivity() {
                     Glide.with(applicationContext).load(user?.imageURL)
                         .into(binding.profileImage)
                 }
+
+                //todo 60
+                user?.imageURL?.let { readMessage(firebaseUser.uid, userId, it) }
             }
 
             override fun onCancelled(databaseError: DatabaseError) {}
@@ -74,5 +84,33 @@ class MessageActivity : AppCompatActivity() {
         val reference = FirebaseDatabase.getInstance().reference
         val hashMap = mapOf("sender" to sender, "receiver" to receiver, "message" to message)
         reference.child("Chats_app").push().setValue(hashMap)
+    }
+
+    //todo 59
+    private fun readMessage(
+        myId: String,
+        userId: String,
+        imageUrl: String
+    ) {
+        binding.rvData.layoutManager = LinearLayoutManager(this)
+        binding.rvData.setHasFixedSize(true)
+        reference = FirebaseDatabase.getInstance().getReference("Chats_app")
+        reference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                listChat.clear()
+                for (snapshot in dataSnapshot.children) {
+                    val chat: Chat = snapshot.getValue(Chat::class.java)!!
+                    if (chat.receiver.equals(myId) && chat.sender.equals(userId) ||
+                        chat.receiver.equals(userId) && chat.sender.equals(myId)
+                    ) {
+                        listChat.add(chat)
+                    }
+                    myAdapter = MessageAdapter(listChat, imageUrl)
+                    binding.rvData.adapter = myAdapter
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {}
+        })
     }
 }
