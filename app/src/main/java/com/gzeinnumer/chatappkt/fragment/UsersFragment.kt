@@ -23,8 +23,8 @@ class UsersFragment : Fragment() {
 
     //todo 40
     private lateinit var binding: FragmentUsersBinding
-    private var myAdapter: UserAdapter? = null
-    private val list: ArrayList<User> = ArrayList<User>()
+    private lateinit var myUserAdapter: UserAdapter
+    private val list: ArrayList<User> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,9 +58,11 @@ class UsersFragment : Fragment() {
                     }
                 }
                 Log.d("MyZein", list.size.toString())
-                
+
+                myUserAdapter = UserAdapter(list)
+
                 binding.rvData.apply {
-                    adapter = UserAdapter(list)
+                    adapter = myUserAdapter
                     layoutManager = LinearLayoutManager(context)
                 }
             }

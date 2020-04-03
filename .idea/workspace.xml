@@ -11,26 +11,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="124529c9-a857-44c5-ba2a-9028e40af091" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/gzeinnumer/chatappkt/adapter/MessageAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/gzeinnumer/chatappkt/model/Chat.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/background_left.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/background_right.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/chat_item_left.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/chat_item_right.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/jarAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/gzeinnumer/chatappkt/MessageActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/gzeinnumer/chatappkt/MessageActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/gzeinnumer/chatappkt/fragment/ChatsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/gzeinnumer/chatappkt/fragment/ChatsFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/gzeinnumer/chatappkt/fragment/UsersFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/gzeinnumer/chatappkt/fragment/UsersFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_chats.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_chats.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,8 +63,8 @@
       <recent name="com.gzeinnumer.chatappkt" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\VIDEO\PEMOGRAMANMOBILEFLUTTER\ChatAppkt\app\src\main\res\drawable" />
       <recent name="D:\VIDEO\PEMOGRAMANMOBILEFLUTTER\ChatAppkt\app\src\main\res\layout" />
+      <recent name="D:\VIDEO\PEMOGRAMANMOBILEFLUTTER\ChatAppkt\app\src\main\res\drawable" />
       <recent name="D:\VIDEO\PEMOGRAMANMOBILEFLUTTER\ChatAppkt\app\src\main\res\drawable-v24" />
       <recent name="D:\VIDEO\PEMOGRAMANMOBILEFLUTTER\ChatAppkt\app\src\main\res" />
     </key>
@@ -201,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585787758053</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="part 9 done">
+      <created>1585836201565</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1585836201565</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -223,6 +216,7 @@
     <MESSAGE value="part 5 done" />
     <MESSAGE value="part 6 done" />
     <MESSAGE value="part 7 done" />
-    <option name="LAST_COMMIT_MESSAGE" value="part 7 done" />
+    <MESSAGE value="part 9 done" />
+    <option name="LAST_COMMIT_MESSAGE" value="part 9 done" />
   </component>
 </project>
