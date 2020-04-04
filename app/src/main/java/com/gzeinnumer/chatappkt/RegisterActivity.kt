@@ -82,8 +82,10 @@ class RegisterActivity : AppCompatActivity() {
                     reference = userId?.let {
                         FirebaseDatabase.getInstance().getReference("Users_chat_app").child(it)
                     }
-                    val hashMap = mapOf("id" to userId, "username" to username, "imageURL" to "default")
-
+//                    val hashMap = mapOf("id" to userId, "username" to username, "imageURL" to "default")
+                    //todo 93 komentarkan yang diatas
+                    val hashMap = mapOf("id" to userId, "username" to username, "imageURL" to "default", "status" to "offline")
+                    //todo 93
                     reference?.setValue(hashMap)?.addOnCompleteListener {
                         if (it.isSuccessful) {
                             startActivity(

@@ -1,5 +1,6 @@
 package com.gzeinnumer.chatappkt
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,9 @@ import com.gzeinnumer.chatappkt.adapter.MessageAdapter
 import com.gzeinnumer.chatappkt.databinding.ActivityMessageBinding
 import com.gzeinnumer.chatappkt.model.Chat
 import com.gzeinnumer.chatappkt.model.User
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.set
 
 //todo 44
 class MessageActivity : AppCompatActivity() {
@@ -36,9 +40,19 @@ class MessageActivity : AppCompatActivity() {
         //todo 48
         val toolbar: Toolbar = view.findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar!!.setTitle("")
+        supportActionBar!!.title = ""
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        toolbar.setNavigationOnClickListener { finish() }
+        toolbar.setNavigationOnClickListener {
+//            finish()
+            //todo 92 komentarkan yang diatas
+            startActivity(
+                Intent(
+                    this@MessageActivity,
+                    MainActivity::class.java
+                ).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            )
+            //end todo 92
+        }
 
         val userId = intent.getStringExtra("id")
         firebaseUser = FirebaseAuth.getInstance().currentUser!!

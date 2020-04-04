@@ -87,7 +87,16 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.logout) {
             FirebaseAuth.getInstance().signOut()
-            startActivity(Intent(this@MainActivity, StartActivity::class.java))
+            //startActivity(Intent(this@MainActivity, StartActivity::class.java))
+            //todo 91 komentarkan yang diatas
+            startActivity(
+                Intent(
+                    this@MainActivity,
+                    StartActivity::class.java
+                ).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            )
+            //end todo 91
+
             finish()
         }
         return false
@@ -121,5 +130,29 @@ class MainActivity : AppCompatActivity() {
         override fun getPageTitle(position: Int): CharSequence? {
             return title[position]
         }
+    }
+
+
+    //todo 80
+    private fun status(status: String) {
+        reference = firebaseUser?.uid?.let {
+            FirebaseDatabase.getInstance().getReference("Users_chat_app")
+                .child(it)
+        }
+        val hashMap = HashMap<String, Any>()
+        hashMap["status"] = status
+        reference!!.updateChildren(hashMap)
+    }
+
+    //todo 81
+    override fun onResume() {
+        super.onResume()
+        status("online")
+    }
+
+    //todo 82
+    override fun onPause() {
+        super.onPause()
+        status("offline")
     }
 }

@@ -87,7 +87,11 @@ class ChatsFragment : Fragment() {
                 }
                 binding.rvData.setHasFixedSize(true)
                 binding.rvData.layoutManager = LinearLayoutManager(context)
-                myUserAdapter = UserAdapter(userListFromUsers)
+//                myUserAdapter = UserAdapter(userListFromUsers)
+                //todo 89 komentarkan yang diatas
+                myUserAdapter = UserAdapter(userListFromUsers, true)
+                //end todo 89
+
                 binding.rvData.adapter = myUserAdapter
             }
 

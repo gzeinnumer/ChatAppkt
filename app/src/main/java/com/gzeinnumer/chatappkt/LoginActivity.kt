@@ -28,7 +28,7 @@ class LoginActivity : AppCompatActivity() {
         //todo 18
         val toolbar: Toolbar = view.findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar!!.setTitle("Chat App Java Login")
+        supportActionBar!!.setTitle("Chat App Kotlin Login")
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         //todo 20

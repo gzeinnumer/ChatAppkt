@@ -59,7 +59,10 @@ class UsersFragment : Fragment() {
                 }
                 Log.d("MyZein", list.size.toString())
 
-                myUserAdapter = UserAdapter(list)
+//                myUserAdapter = UserAdapter(list)
+                //todo 94 komentari yang diatas
+                myUserAdapter = UserAdapter(list, true)
+                //end todo 94
 
                 binding.rvData.apply {
                     adapter = myUserAdapter
