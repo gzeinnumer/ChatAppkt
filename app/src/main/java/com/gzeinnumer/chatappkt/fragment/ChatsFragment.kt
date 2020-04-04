@@ -24,10 +24,10 @@ class ChatsFragment : Fragment() {
     //todo 61
     private lateinit var binding: FragmentChatsBinding
     private lateinit var myUserAdapter: UserAdapter
-    private var users: ArrayList<User> = ArrayList()
+    private var userListFromUsers: ArrayList<User> = ArrayList()
     private lateinit var firebaseUser: FirebaseUser
     private lateinit var reference: DatabaseReference
-    private val userList: ArrayList<String> = ArrayList()
+    private val userListFromChat: ArrayList<String> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,14 +46,14 @@ class ChatsFragment : Fragment() {
         reference = FirebaseDatabase.getInstance().getReference("Chats_app")
         reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                userList.clear()
+                userListFromChat.clear()
                 for (snapshot in dataSnapshot.children) {
                     val chat: Chat = snapshot.getValue(Chat::class.java)!!
                     if (chat.sender.equals(firebaseUser.uid)) {
-                        chat.receiver?.let { userList.add(it) }
+                        chat.receiver?.let { userListFromChat.add(it) }
                     }
                     if (chat.receiver.equals(firebaseUser.uid)) {
-                        chat.sender?.let { userList.add(it) }
+                        chat.sender?.let { userListFromChat.add(it) }
                     }
                 }
                 readChats()
@@ -68,26 +68,26 @@ class ChatsFragment : Fragment() {
         reference = FirebaseDatabase.getInstance().getReference("Users_chat_app")
         reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                users.clear()
+                userListFromUsers.clear()
                 for (snapshot in dataSnapshot.children) {
                     val user = snapshot.getValue(User::class.java)!!
-                    for (id in userList) {
+                    for (id in userListFromChat) {
                         if (user.id.equals(id)) {
-                            if (users.size != 0) {
-                                for (user1 in users) {
-                                    if (!user.id.equals(user1.id)) {
-                                        users.add(user)
+                            if (userListFromUsers.size != 0) {
+                                for (userYangTersedia in userListFromUsers) {
+                                    if (!user.id.equals(userYangTersedia.id)) {
+                                        userListFromUsers.add(user)
                                     }
                                 }
                             } else {
-                                users.add(user)
+                                userListFromUsers.add(user)
                             }
                         }
                     }
                 }
                 binding.rvData.setHasFixedSize(true)
                 binding.rvData.layoutManager = LinearLayoutManager(context)
-                myUserAdapter = UserAdapter(users)
+                myUserAdapter = UserAdapter(userListFromUsers)
                 binding.rvData.adapter = myUserAdapter
             }
 
