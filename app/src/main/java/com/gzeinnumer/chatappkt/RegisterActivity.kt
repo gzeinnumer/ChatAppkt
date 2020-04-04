@@ -84,8 +84,12 @@ class RegisterActivity : AppCompatActivity() {
                     }
 //                    val hashMap = mapOf("id" to userId, "username" to username, "imageURL" to "default")
                     //todo 93 komentarkan yang diatas
-                    val hashMap = mapOf("id" to userId, "username" to username, "imageURL" to "default", "status" to "offline")
+//                    val hashMap = mapOf("id" to userId, "username" to username, "imageURL" to "default", "status" to "offline")
                     //todo 93
+                    //todo 99 komentarkan yang diatas
+                    val hashMap = mapOf("id" to userId, "username" to username, "imageURL" to "default", "status" to "offline", "search" to username.toLowerCase())
+                    //todo 99
+                    //todo 100 perbaiki struktur di firebase dan tambahkan search
                     reference?.setValue(hashMap)?.addOnCompleteListener {
                         if (it.isSuccessful) {
                             startActivity(

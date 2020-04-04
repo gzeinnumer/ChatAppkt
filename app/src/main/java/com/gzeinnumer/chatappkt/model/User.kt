@@ -4,4 +4,7 @@ package com.gzeinnumer.chatappkt.model
 //data class User(val id: String? = "", val username: String? = "", val imageURL: String? = "")
 //todo 79 part 12 start, komentarin todo 30
 //tambah 1 variable, dan perbaiki constructor dan getter setternya
-data class User(val id: String? = "", val username: String? = "", val imageURL: String? = "", val status: String? = "")
+//data class User(val id: String? = "", val username: String? = "", val imageURL: String? = "", val status: String? = "")
+//todo 101 komentarin todo 79
+//tambah 1 variable, dan perbaiki constructor dan getter setternya
+data class User(val id: String? = "", val username: String? = "", val imageURL: String? = "", val status: String? = "", val search: String? = "")
