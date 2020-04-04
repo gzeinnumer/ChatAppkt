@@ -16,6 +16,7 @@ import com.google.firebase.database.*
 import com.gzeinnumer.chatappkt.databinding.ActivityMainBinding
 import com.gzeinnumer.chatappkt.fragment.CameraFragment
 import com.gzeinnumer.chatappkt.fragment.ChatsFragment
+import com.gzeinnumer.chatappkt.fragment.ProfileFragment
 import com.gzeinnumer.chatappkt.fragment.UsersFragment
 import com.gzeinnumer.chatappkt.model.User
 import java.util.*
@@ -65,6 +66,9 @@ class MainActivity : AppCompatActivity() {
             addFragment(CameraFragment(), "Camera")
             addFragment(ChatsFragment(), "Chats")
             addFragment(UsersFragment(), "Users")
+            //todo 70
+            addFragment(ProfileFragment(), "Profile")
+            //end todo 70
             with(binding){
                 viewPager.adapter = viewPagerAdapter
                 tabLayout.setupWithViewPager(viewPager)
