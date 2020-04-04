@@ -3,6 +3,9 @@
     package="com.gzeinnumer.chatappkt">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <!--    todo 71 part 11 start-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
